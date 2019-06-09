@@ -103,5 +103,9 @@ module.exports = function () {
 };
 
 module.exports.process = function (contents, options) {
-	return parser.use(module.exports(options)).process(contents);
+	if (options) {
+		marked.setOptions(options);
+	}
+
+	return parser.use(module.exports()).process(contents);
 };
